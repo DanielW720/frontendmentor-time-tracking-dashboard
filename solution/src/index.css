@@ -1,0 +1,37 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  margin: 0;
+
+}
+
+:root {
+  /* Primary colors */
+  --primaryblue: hsl(246, 80%, 60%);
+  --lightorange: hsl(15, 100%, 70%);
+  --softblue: hsl(195, 74%, 62%);
+  --lightred: hsl(348, 100%, 68%);
+  --limegreen: hsl(145, 58%, 55%);
+  --violet: hsl(264, 64%, 52%);
+  --softorange: hsl(43, 84%, 65%);
+  /* Neutral colors */
+  --verydarkblue: hsl(226, 43%, 10%);
+  --darkblue: hsl(235, 46%, 20%);
+  --desaturatedblue: hsl(235, 45%, 61%);
+  --paleblue: hsl(236, 100%, 87%);
+}
+
+body {
+  background-color: var(--verydarkblue);
+  height: 100vh;
+}
+
+p {
+  font-size: 18px;
+  color: var(--paleblue);
+}
