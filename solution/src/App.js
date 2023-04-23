@@ -46,55 +46,62 @@ const listOfStuff = [
     id: 1,
     user: "Jeremy Robson",
     avatar: imageJeremy,
-    iconBackgroundColor: '--primaryblue'
+    iconBackgroundColor: '--primaryblue',
+    interval: 'Weekly'
   },
   {
     id: 2,
     title: "Work",
     hours: 32,
-    hoursLastWeek: 36,
+    hoursLastInterval: 36,
     icon: iconWork,
-    iconBackgroundColor: '--lightorange'
+    iconBackgroundColor: '--lightorange',
+    interval: 'Weekly'
   },
   {
     id: 3,
     title: "Play",
     hours: 10,
-    hoursLastWeek: 8,
+    hoursLastInterval: 8,
     icon: iconPlay,
-    iconBackgroundColor: '--softblue'
+    iconBackgroundColor: '--softblue',
+    interval: 'Weekly'
   },
   {
     id: 4,
     title: "Study",
     hours: 4,
-    hoursLastWeek: 7,
+    hoursLastInterval: 7,
     icon: iconStudy,
-    iconBackgroundColor: '--lightred'
+    iconBackgroundColor: '--lightred',
+    interval: 'Weekly'
   },
   {
     id: 5,
     title: "Excercise",
     hours: 4,
-    hoursLastWeek: 5,
+    hoursLastInterval: 5,
     icon: iconExercise,
-    iconBackgroundColor: '--limegreen'
+    iconBackgroundColor: '--limegreen',
+    interval: 'Weekly'
   },
   {
     id: 6,
     title: "Social",
     hours: 5,
-    hoursLastWeek: 10,
+    hoursLastInterval: 10,
     icon: iconSocial,
-    iconBackgroundColor: '--violet'
+    iconBackgroundColor: '--violet',
+    interval: 'Weekly'
   },
   {
     id: 7,
     title: "Self Care",
     hours: 2,
-    hoursLastWeek: 2,
+    hoursLastInterval: 2,
     icon: iconSelfCare,
-    iconBackgroundColor: '--softorange'
+    iconBackgroundColor: '--softorange',
+    interval: 'Weekly'
   },
 ];
 
