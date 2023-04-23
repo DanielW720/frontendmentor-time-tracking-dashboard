@@ -1,9 +1,14 @@
 import { Box, Card, Typography } from '@mui/material';
-import React from 'react'
+import React, { useState } from 'react'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
-export default function Cards({ thisWeeksItems }) {
-  const items = thisWeeksItems;
+export default function Cards({ data }) {
+  const [interval, setInterval] = useState('weekly');
+
+  const intervalClickHandler = interval => {
+    setInterval(interval);
+  }
+
   return (
     <Box sx={{
       padding: "0 2rem",
@@ -20,21 +25,32 @@ export default function Cards({ thisWeeksItems }) {
           gridTemplateColumns: '1fr 1fr 1fr 1fr',
           maxWidth: 1000
         }
-      }} >
-        {items.map((item, idx) =>
-          item.user === undefined ?
-            <DataCard item={item} key={idx} /> :
-            <AvatarCard item={item} key={idx} />
-        )}
+      }}>
+        <AvatarCard
+          name={data.user.name}
+          interval={interval}
+          avatar={data.user.avatar}
+          intervalClickHandler={(timeframe) => intervalClickHandler(timeframe)} />
+        {
+          data.data.map((item, idx) => <DataCard key={idx} item={item} interval={interval} />)
+        }
       </Box>
     </Box>
   );
 }
 
-const DataCard = ({ item }) => {
-  const interval = {
-    'Daily': 'Day', 'Weekly': 'Week', 'Monthly': 'Month'
-  }[item.interval];
+const DataCard = ({ item, interval }) => {
+  const timeframe = {
+    'daily': 'Day', 'weekly': 'Week', 'monthly': 'Month'
+  }[interval];
+  const colors = {
+    Work: 'lightorange',
+    Play: 'softblue',
+    Study: 'lightred',
+    Exercise: 'limegreen',
+    Social: 'violet',
+    'Self Care': 'softorange'
+  };
 
   return (
     <Box sx={{
@@ -45,7 +61,7 @@ const DataCard = ({ item }) => {
       },
     }}>
       <Card sx={{
-        bgcolor: `var(${item.iconBackgroundColor})`,
+        bgcolor: `var(--${colors[item.title]})`,
         display: 'flex',
         justifyContent: 'end',
         borderRadius: 3,
@@ -94,11 +110,7 @@ const DataCard = ({ item }) => {
             gridTemplateColumns: '3fr 1fr'
           },
         }}>
-          <Typography fontWeight='500' color='white' sx={{
-
-          }}>
-            {item.title}
-          </Typography>
+          <Typography fontWeight='500' color='white'>{item.title}</Typography>
           <Box textAlign='end'>
             <MoreHorizIcon sx={{
               color: 'var(--paleblue)',
@@ -114,7 +126,7 @@ const DataCard = ({ item }) => {
               fontSize: '35px'
             },
           }}>
-            {item.hours}hrs
+            {item.timeframes[interval].current}hrs
           </Typography>
           <Typography fontSize='13px' textAlign='end' mt='0.5rem' sx={{
             '@media (min-width: 700px)': {
@@ -122,7 +134,7 @@ const DataCard = ({ item }) => {
               textAlign: 'start',
             },
           }}>
-            {`Last ${interval} - ${item.hoursLastInterval}hrs`}
+            {`Last ${timeframe} - ${item.timeframes[interval].previous}hrs`}
           </Typography>
         </Box>
       </Card>
@@ -130,8 +142,8 @@ const DataCard = ({ item }) => {
   );
 }
 
-const AvatarCard = ({ item }) => {
-  const intervals = ['Daily', 'Weekly', 'Monthly'];
+const AvatarCard = ({ name, interval, avatar, intervalClickHandler }) => {
+  const timeframes = ['daily', 'weekly', 'monthly'];
 
   return (
     <Box sx={{
@@ -169,8 +181,8 @@ const AvatarCard = ({ item }) => {
         }}>
           <img
             width='100%'
-            src={item.avatar}
-            alt={`User ${item.user}`}
+            src={avatar}
+            alt={`User ${name}`}
             style={{
               border: '2px solid white',
               borderRadius: '50%',
@@ -187,7 +199,7 @@ const AvatarCard = ({ item }) => {
           <Typography fontSize='20px' color='white' sx={{
             fontSize: '28px',
           }}>
-            {item.user}
+            {name}
           </Typography>
         </Box>
       </Card>
@@ -212,23 +224,28 @@ const AvatarCard = ({ item }) => {
           }
         }}>
           {
-            intervals.map((interval, idx) => {
+            timeframes.map((timeframe, idx) => {
               return (
-                <Typography variant='button' key={idx} fontSize='16px' color={
-                  interval === item.interval ? 'white' : 'var(--paleblue)'
-                } sx={{
-                  fontWeight: 300,
-                  textTransform: 'none',
-                  transition: 'color 0.3s',
-                  '&:hover': {
-                    color: 'white',
-                    cursor: 'pointer',
-                  },
-                  '@media (min-width: 700px)': {
-                    marginTop: '1rem',
-                  }
-                }}>
-                  {interval}
+                <Typography
+                  variant='button'
+                  onClick={() => intervalClickHandler(timeframe)}
+                  key={idx}
+                  fontSize='16px'
+                  color={
+                    timeframe === interval ? 'white' : 'var(--paleblue)'
+                  } sx={{
+                    fontWeight: 300,
+                    textTransform: 'none',
+                    transition: 'color 0.3s',
+                    '&:hover': {
+                      color: 'white',
+                      cursor: 'pointer',
+                    },
+                    '@media (min-width: 700px)': {
+                      marginTop: '1rem',
+                    }
+                  }}>
+                  {timeframe.charAt(0).toUpperCase() + timeframe.slice(1)}
                 </Typography>
               )
             })

@@ -33,7 +33,7 @@ function App() {
               marginBottom: '3rem'
             }
             }>
-              <Cards thisWeeksItems={listOfStuff} />
+              <Cards data={data} />
             </Box>
           </main>
         </div>
@@ -42,68 +42,121 @@ function App() {
   );
 }
 
-const listOfStuff = [
-  {
-    id: 1,
-    user: "Jeremy Robson",
-    avatar: imageJeremy,
-    iconBackgroundColor: '--primaryblue',
-    interval: 'Weekly'
+const data = {
+  user: {
+    name: 'Jeremy Robson',
+    avatar: imageJeremy
   },
-  {
-    id: 2,
-    title: "Work",
-    hours: 32,
-    hoursLastInterval: 36,
-    icon: iconWork,
-    iconBackgroundColor: '--lightorange',
-    interval: 'Weekly'
-  },
-  {
-    id: 3,
-    title: "Play",
-    hours: 10,
-    hoursLastInterval: 8,
-    icon: iconPlay,
-    iconBackgroundColor: '--softblue',
-    interval: 'Weekly'
-  },
-  {
-    id: 4,
-    title: "Study",
-    hours: 4,
-    hoursLastInterval: 7,
-    icon: iconStudy,
-    iconBackgroundColor: '--lightred',
-    interval: 'Weekly'
-  },
-  {
-    id: 5,
-    title: "Excercise",
-    hours: 4,
-    hoursLastInterval: 5,
-    icon: iconExercise,
-    iconBackgroundColor: '--limegreen',
-    interval: 'Weekly'
-  },
-  {
-    id: 6,
-    title: "Social",
-    hours: 5,
-    hoursLastInterval: 10,
-    icon: iconSocial,
-    iconBackgroundColor: '--violet',
-    interval: 'Weekly'
-  },
-  {
-    id: 7,
-    title: "Self Care",
-    hours: 2,
-    hoursLastInterval: 2,
-    icon: iconSelfCare,
-    iconBackgroundColor: '--softorange',
-    interval: 'Weekly'
-  },
-];
+  data: [
+    {
+      "title": "Work",
+      'icon': iconWork,
+      "timeframes": {
+        "daily": {
+          "current": 5,
+          "previous": 7
+        },
+        "weekly": {
+          "current": 32,
+          "previous": 36
+        },
+        "monthly": {
+          "current": 103,
+          "previous": 128
+        }
+      }
+    },
+    {
+      "title": "Play",
+      'icon': iconPlay,
+      "timeframes": {
+        "daily": {
+          "current": 1,
+          "previous": 2
+        },
+        "weekly": {
+          "current": 10,
+          "previous": 8
+        },
+        "monthly": {
+          "current": 23,
+          "previous": 29
+        }
+      }
+    },
+    {
+      "title": "Study",
+      'icon': iconStudy,
+      "timeframes": {
+        "daily": {
+          "current": 0,
+          "previous": 1
+        },
+        "weekly": {
+          "current": 4,
+          "previous": 7
+        },
+        "monthly": {
+          "current": 13,
+          "previous": 19
+        }
+      }
+    },
+    {
+      "title": "Exercise",
+      'icon': iconExercise,
+      "timeframes": {
+        "daily": {
+          "current": 1,
+          "previous": 1
+        },
+        "weekly": {
+          "current": 4,
+          "previous": 5
+        },
+        "monthly": {
+          "current": 11,
+          "previous": 18
+        }
+      }
+    },
+    {
+      "title": "Social",
+      'icon': iconSocial,
+      "timeframes": {
+        "daily": {
+          "current": 1,
+          "previous": 3
+        },
+        "weekly": {
+          "current": 5,
+          "previous": 10
+        },
+        "monthly": {
+          "current": 21,
+          "previous": 23
+        }
+      }
+    },
+    {
+      "title": "Self Care",
+      'icon': iconSelfCare,
+      "timeframes": {
+        "daily": {
+          "current": 0,
+          "previous": 1
+        },
+        "weekly": {
+          "current": 2,
+          "previous": 2
+        },
+        "monthly": {
+          "current": 7,
+          "previous": 11
+        }
+      }
+    }
+  ]
+};
 
 export default App;
