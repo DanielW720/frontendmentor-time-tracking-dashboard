@@ -16,9 +16,9 @@ export default function Cards({ thisWeeksItems }) {
         minWidth: 250,
         maxWidth: 400,
         '@media (min-width: 700px)': {
-          height: '400px',
+          height: '450px',
           gridTemplateColumns: '1fr 1fr 1fr 1fr',
-          maxWidth: 1300
+          maxWidth: 1000
         }
       }} >
         {items.map((item, idx) =>
@@ -74,30 +74,44 @@ const DataCard = ({ item }) => {
         position: 'absolute',
         top: '25%',
         height: '100px',
-        p: '0 1.5rem',
         '@media (min-width: 700px)': {
           height: '80%',
           top: '20%'
         },
       }}>
-        <Box>
-          <Typography fontWeight='500' color='white'>
+        <Box sx={{
+          width: '100%',
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          pr: '1rem',
+          pl: '1rem',
+          '@media (min-width: 700px)': {
+            gridTemplateColumns: '3fr 1fr'
+          },
+        }}>
+          <Typography fontWeight='500' color='white' sx={{
+
+          }}>
             {item.title}
           </Typography>
-          <Typography fontSize='25px' fontWeight='300'>
+          <Box textAlign='end'>
+            <MoreHorizIcon sx={{
+              color: 'var(--paleblue)',
+            }} />
+          </Box>
+          <Typography fontSize='25px' fontWeight='300' color='white' sx={{
+            '@media (min-width: 700px)': {
+              fontSize: '35px'
+            },
+          }}>
             {item.hours}hrs
           </Typography>
-        </Box>
-        <Box sx={{
-          display: 'flex',
-          flexDirection: 'column'
-        }}>
-          <MoreHorizIcon sx={{
-            color: 'var(--paleblue)',
-            alignSelf: 'end',
-            mb: '0.5rem'
-          }} />
-          <Typography fontSize='13px' mb='0.4rem' ml='0.4rem'>
+          <Typography fontSize='13px' textAlign='end' mt='0.5rem' sx={{
+            '@media (min-width: 700px)': {
+              gridColumn: '1 / 2',
+              textAlign: 'start',
+            },
+          }}>
             {`Last ${interval} - ${item.hoursLastInterval}hrs`}
           </Typography>
         </Box>
@@ -155,7 +169,6 @@ const AvatarCard = ({ item }) => {
         <Box ml='1rem' sx={{
           '@media (min-width: 700px)': {
             mt: '2rem',
-            ml: '0.5rem'
           }
         }}>
           <Typography fontFamily='Rubik' fontSize='13px'>
@@ -163,7 +176,6 @@ const AvatarCard = ({ item }) => {
           </Typography>
           <Typography fontSize='20px' color='white' sx={{
             fontSize: '28px',
-            mr: '1rem',
           }}>
             {item.user}
           </Typography>
@@ -186,7 +198,7 @@ const AvatarCard = ({ item }) => {
           paddingTop: '2rem',
           '@media (min-width: 700px)': {
             flexDirection: 'column',
-            padding: '3.3rem 0 1rem 1rem',
+            padding: '3.5rem 0 1rem 2rem',
           }
         }}>
           {
@@ -196,7 +208,7 @@ const AvatarCard = ({ item }) => {
                   interval === item.interval ? 'white' : ''
                 } sx={{
                   '@media (min-width: 700px)': {
-                    marginTop: '0.5rem',
+                    marginTop: '1rem',
                   }
                 }}>
                   {interval}

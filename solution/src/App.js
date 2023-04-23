@@ -29,7 +29,8 @@ function App() {
           <main>
             <Box sx={{
               width: "100vw",
-              marginTop: "3rem"
+              marginTop: "3rem",
+              marginBottom: '3rem'
             }
             }>
               <Cards thisWeeksItems={listOfStuff} />
