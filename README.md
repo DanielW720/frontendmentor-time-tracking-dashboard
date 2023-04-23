@@ -9,29 +9,30 @@ This is a solution to the [Time tracking dashboard challenge on Frontend Mentor]
 
 Users should be able to:
 
+- Switch between viewing Daily, Weekly, and Monthly stats
 - View the optimal layout for the site depending on their device's screen size
 - See hover states for all interactive elements on the page
-- Switch between viewing Daily, Weekly, and Monthly stats
+
+### Design:
+
+<img src="design/desktop-design.jpg" width=80% >
 
 ### Screenshot
 
-![](./screenshot.jpg)
+<img src="screenshot.png" width=80% >
 
 ### Links
 
 - Solution URL: [Solution](./solution/)
-- Live Site URL: [Live Site](https://your-live-site-url.com)
-
-## My process
+- Live Site URL: [Live Site](https://main--magnificent-macaron-aeefb3.netlify.app/)
 
 ### Built with
 
-- Semantic HTML5 markup
-- CSS custom properties
+- [React](https://reactjs.org/)
+- [Material UI](https://mui.com/)
 - Flexbox
 - CSS Grid
 - Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
 
 ## Author
 
