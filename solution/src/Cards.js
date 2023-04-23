@@ -73,10 +73,15 @@ const DataCard = ({ item }) => {
         borderRadius: 3,
         position: 'absolute',
         top: '25%',
+        transition: 'background-color 0.3s',
+        '&:hover': {
+          bgcolor: 'var(--desaturatedblue)',
+          cursor: 'pointer'
+        },
         height: '100px',
         '@media (min-width: 700px)': {
           height: '80%',
-          top: '20%'
+          top: '20%',
         },
       }}>
         <Box sx={{
@@ -97,6 +102,11 @@ const DataCard = ({ item }) => {
           <Box textAlign='end'>
             <MoreHorizIcon sx={{
               color: 'var(--paleblue)',
+              '&:hover': {
+                color: 'white',
+                transition: 'color 0.3s',
+                cursor: 'pointer'
+              },
             }} />
           </Box>
           <Typography fontSize='25px' fontWeight='300' color='white' sx={{
@@ -204,9 +214,16 @@ const AvatarCard = ({ item }) => {
           {
             intervals.map((interval, idx) => {
               return (
-                <Typography key={idx} fontSize='16px' color={
-                  interval === item.interval ? 'white' : ''
+                <Typography variant='button' key={idx} fontSize='16px' color={
+                  interval === item.interval ? 'white' : 'var(--paleblue)'
                 } sx={{
+                  fontWeight: 300,
+                  textTransform: 'none',
+                  transition: 'color 0.3s',
+                  '&:hover': {
+                    color: 'white',
+                    cursor: 'pointer',
+                  },
                   '@media (min-width: 700px)': {
                     marginTop: '1rem',
                   }
